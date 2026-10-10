@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Elo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eeeef4;--frame:#14121f;--ink:#14121f;--gold:#f2b632;--rose:#e8546a;--sky:#9cc3ff;
+--sfx:'Bangers',Impact,sans-serif;--txt:'Patrick Hand','Comic Sans MS',cursive,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b12;--frame:#f6f6fa}}
+:root[data-theme="dark"]{--bg:#0b0b12;--frame:#f6f6fa}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:var(--txt);font-weight:700;font-size:1.25rem;color:var(--ink)}
+p{margin:0}
+.strip{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:14px 12px 56px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;overflow-x:clip}
+/* panels */
+.pn{grid-column:span 6;position:relative;border:3px solid var(--frame);overflow:hidden;padding:16px;background:#fbfbff;opacity:0;transform:translateX(80px);transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .3s}
+.pn.in{opacity:1;transform:none}
+.pn>*{position:relative}
+.c4{grid-column:span 4}.c2{grid-column:span 2}
+.dk{color:#fff}
+.tone::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--dot,#14121f) 1.2px,transparent 1.7px) 0 0/8px 8px;opacity:.14;-webkit-mask-image:linear-gradient(135deg,#000,transparent 55%);mask-image:linear-gradient(135deg,#000,transparent 55%);pointer-events:none}
+.dk.tone{--dot:#fff}
+.art-burst{background:repeating-conic-gradient(from 0deg at 50% 60%,#f6c344 0 5deg,#ffe08a 5deg 10deg)}
+.art-blue{background:linear-gradient(160deg,#2c5099,#0f1c3b)}
+.art-night{background:radial-gradient(circle at 50% 66%,rgba(255,196,80,.5),transparent 55%),repeating-conic-gradient(from 0deg at 50% 66%,rgba(255,255,255,.07) 0 4deg,transparent 4deg 9deg),linear-gradient(#0a1230,#1d3670)}
+.art-black{background:radial-gradient(circle at 50% 100%,rgba(242,182,50,.35),transparent 60%),#101018}
+.cap{display:inline-block;background:var(--gold);border:3px solid var(--ink);padding:2px 12px;margin:0 0 12px;color:#14121f}
+h1{font-family:var(--sfx);font-weight:400;letter-spacing:.02em;font-size:clamp(2.6rem,13vw,3.8rem);line-height:.98;margin:4px 0 12px;color:#14121f;-webkit-text-stroke:2px #fff;paint-order:stroke fill;text-shadow:4px 4px 0 #14121f}
+.bb{text-transform:uppercase;-webkit-text-stroke:3px #fff;paint-order:stroke fill;text-shadow:3px 3px 0 #14121f,6px 6px 0 var(--rose),6px 6px 0 #14121f;transform:rotate(-2deg);letter-spacing:.02em;padding-right:8px}
+.end h1{color:var(--gold);text-shadow:4px 4px 0 #000;-webkit-text-stroke:0;font-size:clamp(2.2rem,11vw,3.2rem)}
+.nar{font-size:1.1rem;padding:10px 16px}
+.nar span{text-transform:uppercase;letter-spacing:.03em;display:inline-block;background:#fff;color:#14121f;border:3px solid #14121f;padding:4px 12px}
+/* bubbles pop */
+.pop{--rot:0deg;opacity:0;transform:scale(.3) rotate(calc(var(--rot) - 6deg));transform-origin:25% 100%;transition:transform .45s cubic-bezier(.3,1.7,.5,1),opacity .2s}
+.pop.in{opacity:1;transform:rotate(var(--rot))}
+.pop.r{transform-origin:75% 100%}
+.bubble{position:relative;background:#fff;color:#14121f;border:3px solid #14121f;border-radius:44px/36px;padding:12px 22px;line-height:1.2;max-width:min(92%,30ch);text-align:center;margin-bottom:14px;text-transform:uppercase;letter-spacing:.03em}
+.bubble::after{content:"";position:absolute;bottom:-12px;left:46px;width:18px;height:18px;background:#fff;border-right:3px solid #14121f;border-bottom:3px solid #14121f;transform:rotate(45deg) skew(8deg,8deg)}
+.bubble.r{margin-left:auto}.bubble.r::after{left:auto;right:46px}
+.sfxw{position:absolute!important;right:10px;bottom:8px;top:auto;font-family:var(--sfx);font-size:2.3rem;color:var(--gold);-webkit-text-stroke:2px #14121f;paint-order:stroke fill;text-shadow:3px 3px 0 #14121f;--rot:9deg}
+/* stickers */
+.stk{position:relative;display:block;cursor:pointer}
+.stk input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:2}
+.stk .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:8px;border:3px dashed #fff;border-radius:16px;color:#fff;font-size:1rem;background:rgba(255,255,255,.12)}
+.stkimg{object-fit:contain;display:block;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 5px 6px rgba(0,0,0,.35))}
+.stk.has img{display:block}.stk.has .ph{display:none}
+.stk-hero{width:100%;aspect-ratio:1/1.05}
+.stk-side{width:185px;aspect-ratio:1/1.2;position:absolute!important;right:10px;bottom:250px}
+.stk-wish{width:138%;aspect-ratio:1/1.35;margin-top:1px;margin-left:-25px}
+.stk-end{width:min(100%,220px);aspect-ratio:1/1.1;margin:0 auto 8px}
+/* coin */
+.coin{display:inline-grid;place-items:center;width:1.3em;height:1.3em;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b0,var(--gold) 45%,#c98a10);border:2px solid #14121f;font-family:var(--sfx);font-weight:400;font-size:.8em;color:#7a4e00;line-height:1}
+.bigcoin{font-size:4.6rem;margin:auto;border-width:4px;animation:spin 2.6s linear infinite}
+@keyframes spin{to{transform:rotateY(360deg)}}
+.coinp{display:grid;place-items:center;min-height:170px}
+/* cake panel */
+.cakep{min-height:640px;display:flex;flex-direction:column}
+.stage{position:relative;flex:1;min-height:340px}
+.cake{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:250px}
+.tier{border:3px solid #14121f;position:relative}
+.t1{height:70px;width:176px;margin:0 auto;background:var(--rose);border-radius:10px 10px 0 0}
+.t2{height:92px;background:var(--gold);width:100%;margin-top:-3px}
+.t1::before,.t2::before{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:radial-gradient(circle at 12px 0,#fff 11px,transparent 12px) 0 0/24px 16px repeat-x}
+.age{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--sfx);font-size:3.4rem;line-height:1;color:#fff;-webkit-text-stroke:2px #14121f;paint-order:stroke fill;text-shadow:3px 3px 0 #14121f}
+.plate{height:14px;width:274px;margin:-3px auto 0;background:var(--sky);border:3px solid #14121f;border-radius:50%;position:relative;left:-12px}
+.candles{position:absolute;left:50%;width:150px;transform:translateX(-50%);top:-74px;display:flex;justify-content:space-between}
+.candle{position:relative;width:26px;height:76px;background:none;border:0;padding:0;cursor:pointer;display:block}
+.candle:focus-visible{outline:3px solid #fff;outline-offset:2px;border-radius:6px}
+.candle .wax{position:absolute;bottom:0;left:7px;width:12px;height:46px;background:repeating-linear-gradient(45deg,#fff 0 6px,var(--sky) 6px 12px);border:2px solid #14121f}
+.flame{position:absolute;left:4px;bottom:46px;width:18px;height:28px;background:radial-gradient(circle at 50% 70%,#fff6c2 0 25%,var(--gold) 45%,#ff7a2f 100%);border:2px solid #14121f;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;transform-origin:50% 100%;transition:transform .25s,opacity .25s;animation:flick .5s infinite alternate ease-in-out}
+.candle:not(.lit) .flame{transform:scale(.1);opacity:0;animation:none}
+@keyframes flick{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.07,.94) rotate(3deg)}}
+.sfx{font-family:var(--sfx);font-weight:400;font-size:2.8rem;color:var(--rose);-webkit-text-stroke:2px #14121f;paint-order:stroke fill;text-shadow:3px 3px 0 #14121f;text-align:center;margin:0 0 6px;animation:sp .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes sp{from{transform:rotate(-6deg) scale(.2)}}
+.ledger{display:inline-flex;align-items:center;gap:8px;background:var(--gold);border:3px solid #14121f;padding:2px 12px;margin:0 8px 10px 0;color:#14121f}
+.status{margin:4px 0 12px}
+.btn{font:inherit;background:var(--gold);color:#14121f;border:3px solid #14121f;padding:6px 16px;cursor:pointer;box-shadow:3px 3px 0 #14121f}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #14121f}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.end{text-align:center;min-height:420px}.end .bubble{margin-left:auto;margin-right:auto}
+/* bg coins + confetti */
+#coins{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#coins i{position:absolute;top:-50px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b0,var(--gold) 45%,#c98a10);border:3px solid #14121f;opacity:.75;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(115vh) rotateY(900deg)}}
+#cf{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+@media (prefers-reduced-motion:reduce){.pn,.pop{opacity:1;transform:rotate(var(--rot,0deg));transition:none}.pn{transform:none}.flame,.sfx,.bigcoin{animation:none}#coins{display:none}}
+</style>
+</head>
+<body>
+<div id="coins" aria-hidden="true"></div>
+<canvas id="cf" aria-hidden="true"></canvas>
+<main class="strip">
+
+<section class="pn art-burst" style="min-height:240px">
+  <p class="cap">Frontera Territory · Special Report</p>
+  <span class="sfxw pop" aria-hidden="true">CHING!</span>
+  <h1 class="bb">Happy Birthday, <span data-name>Elo</span>!</h1>
+</section>
+
+<section class="pn c4 art-blue dk tone" data-d="80" style="padding:10px;min-height:250px">
+  <img class="stk-hero stkimg pop" src="hero.png" alt="Lloyd">
+  </section> 
+<section class="pn c2 art-black dk coinp" data-d="180"><span class="coin bigcoin" aria-hidden="true">G</span></section>
+
+<section class="pn art-blue dk tone">
+  <div class="bubble pop"><p>Tch. Another year already? Time really is money.</p></div>
+  <div class="bubble r pop" data-d="120"><p>Fine. I've budgeted one whole day of rest for you. Do NOT turn it into overtime.</p></div>
+</section>
+
+<section class="pn art-black dk nar" style="padding:12px 14px">
+  <span>That morning, at the Frontera estate…</span>
+</section>
+
+<section class="pn cakep art-night dk">
+  <p class="cap">Construction site: the cake tower</p>
+  <div class="bubble pop"><p>Blow them out fast. A candle is just money burning slowly.</p></div>
+  <div class="stage">
+    <div class="cake">
+      <div class="candles" id="candles"></div>
+      <div class="tier t1"></div><div class="tier t2"><span class="age">21</span></div><div class="plate"></div>
+    </div>
+    <img class="stk-side stkimg pop" src="cake.png" alt="Lloyd">
+  </div>
+  <p class="sfx" id="sfx" hidden>FWOOSH!</p>
+  <p><span class="ledger"><span class="coin" aria-hidden="true">G</span>Treasury: <span id="gold">0</span> G</span></p>
+  <p class="status" id="status" aria-live="polite"></p>
+  <div><button class="btn" id="relight" type="button">Relight the candles</button></div>
+</section>
+
+<section class="pn tone" style="min-height:190px">
+  <p class="cap">Wishes from the territory lord</p>
+  <div class="bubble pop" data-w="0"></div>
+</section>
+
+<section class="pn c4 art-burst" data-d="60" style="min-height:230px">
+  <div class="bubble r pop" data-w="1"></div>
+</section>
+<section class="pn c2 art-blue dk tone" data-d="160" style="padding:8px">
+  <img class="stk-wish stkimg pop" src="wish.png" alt="Lloyd">
+</section>
+
+<section class="pn art-blue dk tone" style="min-height:170px">
+  <div class="bubble pop" data-w="2"></div>
+</section>
+<section class="pn tone" style="min-height:170px">
+  <div class="bubble r pop" data-w="3"></div>
+</section>
+
+<section class="pn end art-black dk">
+  <h1>To be continued…</h1>
+  <img class="stk-end stkimg pop" src="end.png" alt="Lloyd">
+  <div class="bubble pop"><p>Enough sentiment. Get some sleep. We have a territory to build tomorrow.</p></div>
+  <p>Next chapter: your best year yet. Love, <span data-from>Thumbi</span></p>
+  <p style="margin-top:12px"><button class="btn" id="again" type="button">Make it rain gold</button></p>
+</section>
+
+</main>
+<script>
+const NAME="Elo", FROM="Thumbi";
+const WISHES=[
+ "May your roads be smooth, your ledgers balanced, and your profits obscene.",
+ "Every project you start? Finished ahead of schedule. That's an order.",
+ "No overtime today. Rest is a legitimate line item.",
+ "Happy birthday. Best investment I ever made was you. Don't tell the accountants."
+];
+
+document.querySelectorAll('[data-name]').forEach(e=>e.textContent=NAME);
+document.querySelectorAll('[data-from]').forEach(e=>e.textContent=FROM);
+document.title="Happy Birthday, "+NAME;
+document.querySelectorAll('[data-w]').forEach(b=>{const p=document.createElement('p');p.textContent=WISHES[b.dataset.w]||'';b.appendChild(p)});
+
+/* panels slide in from the right, bubbles pop; both reverse when scrolled away */
+const io=new IntersectionObserver(es=>es.forEach(e=>{const t=e.target;t.style.transitionDelay=e.isIntersecting?(t.dataset.d||0)+'ms':'0ms';t.classList.toggle('in',e.isIntersecting)}),{threshold:.2,rootMargin:'0px 0px -4% 0px'});
+document.querySelectorAll('.pn,.pop').forEach(el=>io.observe(el));
+
+/* background coins */
+const cl=document.getElementById('coins');
+for(let i=0;i<8;i++){const c=document.createElement('i'),s=22+Math.random()*18;c.style.cssText=`left:${Math.random()*96}%;width:${s}px;height:${s}px;animation-duration:${16+Math.random()*12}s;animation-delay:-${Math.random()*20}s`;cl.appendChild(c)}
+
+/* treasury */
+const goldEl=document.getElementById('gold');let gold=0,shown=0;
+function addGold(n){gold+=n;const s=shown,t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/500);shown=Math.round(s+(gold-s)*k);goldEl.textContent=shown.toLocaleString();if(k<1)requestAnimationFrame(f)})(t0)}
+
+/* candles */
+const wrap=document.getElementById('candles'),sfx=document.getElementById('sfx'),st=document.getElementById('status');
+for(let i=1;i<=5;i++){const b=document.createElement('button');b.type='button';b.className='candle lit';b.setAttribute('aria-label','Blow out candle '+i);b.innerHTML='<span class="flame"></span><span class="wax"></span>';wrap.appendChild(b)}
+const cs=[...wrap.children];
+function update(){const n=cs.filter(c=>c.classList.contains('lit')).length;
+  if(n){st.textContent='Tap each flame to blow it out. '+n+' left.';sfx.hidden=true}
+  else{st.textContent='Wish approved. Funding secured. Don\'t ask where it came from.';sfx.hidden=false;addGold(1000);boom()}}
+cs.forEach(c=>c.addEventListener('click',()=>{if(c.classList.contains('lit')){c.classList.remove('lit');addGold(250);update()}}));
+document.getElementById('relight').addEventListener('click',()=>{cs.forEach(c=>c.classList.add('lit'));addGold(-gold);update()});
+update();
+
+/* confetti + gold coins */
+const cv=document.getElementById('cf'),cx=cv.getContext('2d');let ps=[],raf=0;
+const still=matchMedia('(prefers-reduced-motion: reduce)'),dpr=devicePixelRatio||1;
+function fit(){cv.width=innerWidth*dpr;cv.height=innerHeight*dpr}
+addEventListener('resize',fit);fit();
+function boom(){
+  if(still.matches)return;
+  const cols=['#f2b632','#e8546a','#9cc3ff','#ffffff','#23407a'],W=cv.width,H=cv.height;
+  for(let i=0;i<160;i++)ps.push({x:W/2+(Math.random()-.5)*W*.3,y:H*.55,vx:(Math.random()-.5)*16*dpr,vy:-(6+Math.random()*13)*dpr,w:(6+Math.random()*7)*dpr,h:(4+Math.random()*5)*dpr,a:Math.random()*6,va:(Math.random()-.5)*.4,c:cols[i%5],coin:i%4==0});
+  if(!raf)raf=requestAnimationFrame(tick);
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  ps=ps.filter(p=>p.y<cv.height+40);
+  ps.forEach(p=>{p.vy+=.35*dpr;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;cx.save();cx.translate(p.x,p.y);
+    if(p.coin){const r=7*dpr;cx.scale(Math.abs(Math.cos(p.a)),1);cx.beginPath();cx.arc(0,0,r,0,7);cx.fillStyle='#f2b632';cx.fill();cx.lineWidth=2*dpr;cx.strokeStyle='#14121f';cx.stroke();cx.beginPath();cx.arc(0,0,r*.55,0,7);cx.stroke()}
+    else{cx.rotate(p.a);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h)}
+    cx.restore()});
+  raf=ps.length?requestAnimationFrame(tick):0;
+}
+document.getElementById('again').addEventListener('click',boom);
+</script>
+</body>
+</html>
