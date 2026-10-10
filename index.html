@@ -49,7 +49,7 @@ h1{font-family:var(--sfx);font-weight:400;letter-spacing:.02em;font-size:clamp(2
 .stkimg{object-fit:contain;display:block;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 5px 6px rgba(0,0,0,.35))}
 .stk.has img{display:block}.stk.has .ph{display:none}
 .stk-hero{width:100%;aspect-ratio:1/1.05}
-.stk-side{width:125px;aspect-ratio:1/1.2;position:absolute!important;right:-4px;top:0}
+.stk-side{width:125px;aspect-ratio:1/1.2;position:absolute!important;right:-4px;bottom:90px}
 .stk-wish{width:100%;aspect-ratio:1/1.35;margin-top:20px}
 .stk-end{width:min(100%,220px);aspect-ratio:1/1.1;margin:0 auto 8px}
 /* coin */
@@ -94,6 +94,9 @@ h1{font-family:var(--sfx);font-weight:400;letter-spacing:.02em;font-size:clamp(2
 }
 @media (max-width:699px){
   .cakep .bubble{max-width:70%;font-size:.85em;padding:8px 14px}
+}
+@media (max-width:699px){
+  .stk-side{bottom:auto;top:0}
 }
 </style>
 </head>
