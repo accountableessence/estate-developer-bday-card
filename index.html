@@ -49,8 +49,8 @@ h1{font-family:var(--sfx);font-weight:400;letter-spacing:.02em;font-size:clamp(2
 .stkimg{object-fit:contain;display:block;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 5px 6px rgba(0,0,0,.35))}
 .stk.has img{display:block}.stk.has .ph{display:none}
 .stk-hero{width:100%;aspect-ratio:1/1.05}
-.stk-side{width:185px;aspect-ratio:1/1.2;position:absolute!important;right:10px;bottom:250px}
-.stk-wish{width:138%;aspect-ratio:1/1.35;margin-top:1px;margin-left:-25px}
+.stk-side{width:125px;aspect-ratio:1/1.2;position:absolute!important;right:-4px;bottom:0}
+.stk-wish{width:100%;aspect-ratio:1/1.35;margin-top:20px}
 .stk-end{width:min(100%,220px);aspect-ratio:1/1.1;margin:0 auto 8px}
 /* coin */
 .coin{display:inline-grid;place-items:center;width:1.3em;height:1.3em;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b0,var(--gold) 45%,#c98a10);border:2px solid #14121f;font-family:var(--sfx);font-weight:400;font-size:.8em;color:#7a4e00;line-height:1}
@@ -88,6 +88,10 @@ h1{font-family:var(--sfx);font-weight:400;letter-spacing:.02em;font-size:clamp(2
 @keyframes fall{to{transform:translateY(115vh) rotateY(900deg)}}
 #cf{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
 @media (prefers-reduced-motion:reduce){.pn,.pop{opacity:1;transform:rotate(var(--rot,0deg));transition:none}.pn{transform:none}.flame,.sfx,.bigcoin{animation:none}#coins{display:none}}
+@media (min-width:700px){
+  .stk-side{width:185px;right:10px;bottom:250px}
+  .stk-wish{width:138%;margin-left:-25px}
+}
 </style>
 </head>
 <body>
